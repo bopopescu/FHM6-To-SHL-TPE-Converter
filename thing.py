@@ -1,13 +1,15 @@
 import mysql.connector
 
 class Player:
-  def __init__(self, record):
-    self.raw_data = record
+  def __init__(self, raw_data):
+    self.attributes = {'first_name': raw_data[0], 'last_name': raw_data[1], 'aggression': raw_data[9],
+                       'bravery': raw_data[10], 'Determination': raw_data[11]}
+
 
 
 mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
+  host="192.168.10.53",
+  user="ckalinowski",
   passwd="Windforce",
   database="fhm6"
 )
@@ -31,7 +33,7 @@ myresult = mycursor.fetchall()
 
 for x in myresult:
   player = Player(x)
-  print(player.raw_data)
+  print(player.attributes)
 
 
 
