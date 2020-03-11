@@ -22,6 +22,6 @@ mycursor.execute("SELECT fhm6.player_master.`First Name`, fhm6.player_master.`La
                               ORDER BY fhm6.league_data.Name")
 
 myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
+with open('player.txt', 'w+') as file:
+  for x in myresult:
+    file.write(str(x)+'\n')
