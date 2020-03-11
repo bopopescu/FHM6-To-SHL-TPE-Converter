@@ -1,5 +1,10 @@
 import mysql.connector
 
+class Player:
+  def __init__(self, record):
+    self.raw_data = record
+
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -7,7 +12,6 @@ mydb = mysql.connector.connect(
   database="fhm6"
 )
 
-print(mydb)
 
 mycursor = mydb.cursor()
 
@@ -22,6 +26,18 @@ mycursor.execute("SELECT fhm6.player_master.`First Name`, fhm6.player_master.`La
                               ORDER BY fhm6.league_data.Name")
 
 myresult = mycursor.fetchall()
-with open('player.txt', 'w+') as file:
-  for x in myresult:
-    file.write(str(x)+'\n')
+
+
+
+for x in myresult:
+  player = Player(x)
+  print(player.raw_data)
+
+
+
+
+
+
+#with open('player.txt', 'w+') as file:
+#  for x in myresult:
+#    file.write(str(x)+'\n')
