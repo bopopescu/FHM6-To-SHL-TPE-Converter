@@ -66,7 +66,7 @@ class Player:
 
 def main():
     mydb = mysql.connector.connect(
-        host="192.168.10.53",
+        host="localhost",
         user="user",
         passwd="password",
         database="fhm6"
